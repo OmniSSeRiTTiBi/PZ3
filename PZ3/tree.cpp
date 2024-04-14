@@ -4,30 +4,70 @@
 
 enum place { LEFT = 0, RIGHT, ROOT };
 
-int tree::input( FILE *f )
+tree *BuildTree( FILE *f )
 {
-   tree *root = NULL;
-
-   if ( fopen_s( &f, "in.txt", "r" ) )
+   char *c = new char( '0' );
+   tree *t = new tree;
+   fscanf_s( f, "%c", c, 2);
+   switch ( *c )
    {
-      perror( "in.txt" );
-      errno = 0;
-      return 1;
+      case '(':
+         fscanf_s( f, "%c", c, 2 );
+         t->elem = *c;
+         t->left = BuildTree( f );
+         t->right = BuildTree( f );
+         fscanf_s( f, "%c", c, 2 );
+         return t;
+      case ',': return BuildTree( f );
+      case '0': return NULL;
    }
-
-
+   fclose( f );
+   delete c;
 }
 
 void copy_tree( tree *t, tree *copy )
 {
-   if ( !t  ) copy = NULL;
+   if ( !t ) copy = NULL;
    else
    {
-      copy->elem = t->elem;
+      copy = new tree( t->elem, NULL, NULL);
       copy_tree( t->left, copy->left );
       copy_tree( t->right, copy->right );
    }
 }
+
+void tree::bracketing ( )
+{
+   queue q = NULL;
+   if ( this != NULL )
+   {
+      PUSH( q, t );
+      do
+      {
+         POP( q, t );
+         
+
+
+         if ( left != NULL )
+            PUSH( q, t->left );
+         if ( right != NULL )
+            PUSH( q, right );
+      } while ( !EMPTY( q ) );
+   }
+}
+
+void bracketing( )
+{
+
+}
+
+
+
+
+
+
+
+
 
 //tree *tree::copy( )
 //{
