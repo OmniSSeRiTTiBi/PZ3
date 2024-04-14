@@ -25,4 +25,3 @@ struct tree
 };
 
 tree *BuildTree( FILE *f );
-void copy_tree( tree *t, tree *copy );

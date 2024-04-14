@@ -25,19 +25,10 @@ tree *BuildTree( FILE *f )
    delete c;
 }
 
-void copy_tree( tree *t, tree *copy )
-{
-   if ( !t ) copy = NULL;
-   else
-   {
-      copy = new tree( t->elem, NULL, NULL);
-      copy_tree( t->left, copy->left );
-      copy_tree( t->right, copy->right );
-   }
-}
-
 void tree::bracketing ( )
 {
+   bool mult = false;
+   UCHAR plus = 0;
    queue q = NULL;
    if ( this != NULL )
    {
@@ -56,10 +47,6 @@ void tree::bracketing ( )
    }
 }
 
-void bracketing( )
-{
-
-}
 
 
 

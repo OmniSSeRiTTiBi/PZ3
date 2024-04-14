@@ -14,7 +14,6 @@ int main( )
    delete f;
 
    tree *tcopy = NULL;
-   copy_tree( t, tcopy );
 
    return 0;
 }
