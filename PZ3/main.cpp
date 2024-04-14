@@ -3,7 +3,7 @@
 #include <windows.h>
 
 enum place { LEFT = 0, ROOT, RIGHT };
-
+//xyu
 int main( )
 {
    tree *t = NULL;
