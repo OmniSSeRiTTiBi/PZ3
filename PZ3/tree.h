@@ -24,4 +24,5 @@ struct tree
 
 };
 
+void bracketing( tree *t );
 tree *BuildTree( FILE *f );

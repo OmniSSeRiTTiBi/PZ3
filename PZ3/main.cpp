@@ -12,7 +12,7 @@ int main( )
       perror( "in.txt" ), exit( -1 );
    t = BuildTree(f);
    delete f;
-
+   t->bracketing( );
    tree *tcopy = NULL;
 
    return 0;

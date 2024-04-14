@@ -1,6 +1,6 @@
 #include<windows.h>
 #include"tree.h"
-
+#include "queue.h"
 
 enum place { LEFT = 0, RIGHT, ROOT };
 
@@ -29,21 +29,18 @@ void tree::bracketing ( )
 {
    bool mult = false;
    UCHAR plus = 0;
-   queue q = NULL;
+   queue q;
    if ( this != NULL )
    {
-      PUSH( q, t );
+      q.push( this );
       do
       {
-         POP( q, t );
-         
-
-
+         q.pop( );
          if ( left != NULL )
-            PUSH( q, t->left );
+            q.push( left );
          if ( right != NULL )
-            PUSH( q, right );
-      } while ( !EMPTY( q ) );
+            q.push( right );
+      } while ( !q.empty() );
    }
 }
 
