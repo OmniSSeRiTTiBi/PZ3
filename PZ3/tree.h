@@ -16,12 +16,6 @@ struct tree
    void pre_order( FILE *f );
    void in_order( FILE *f );
    void post_order( FILE *f );
-
-   
-
-   
-   //void push( char c, bool place);
-
 };
 
 void bracketing( tree *t );

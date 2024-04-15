@@ -12,9 +12,8 @@ void queue::push( tree *v )
       end = new list( v, NULL, end );
       end->prev->next = end;
    }
+   ++count;
 }
-
-inline tree *queue::top( ) const { return beg->elem; }
 
 int queue::pop( )
 {
@@ -33,5 +32,3 @@ int queue::pop( )
       --count;
    }
 }
-
-inline bool queue::empty( ) const { return !beg; }

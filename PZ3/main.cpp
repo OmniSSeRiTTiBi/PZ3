@@ -8,12 +8,11 @@ int main( )
 {
    tree *t = NULL;
    FILE *f = NULL;
-   if ( fopen_s( &f, "in.txt", "r" ) )
+   if ( fopen_s( &f, "C:/Users/egovl/Source/Repos/OmniSSeRiTTiBi/PZ3/PZ3/in.txt", "r" ) )
       perror( "in.txt" ), exit( -1 );
    t = BuildTree(f);
    delete f;
    t->bracketing( );
-   tree *tcopy = NULL;
 
    return 0;
 }
