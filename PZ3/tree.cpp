@@ -1,7 +1,7 @@
 #pragma once
 
-#include<windows.h>
-#include"tree.h"
+#include <windows.h>
+#include "tree.h"
 #include "queue.h"
 
 enum place { LEFT = 0, RIGHT, ROOT };
@@ -25,9 +25,9 @@ tree *BuildTree( FILE *f )
       default:
          t->elem = *c;
          return t;
+         fclose( f );
+         delete c;
    }
-   fclose( f );
-   delete c;
 }
 
 void tree::move_brack( tree *head, tree *tot_multi, tree *mult1, tree mult2 )

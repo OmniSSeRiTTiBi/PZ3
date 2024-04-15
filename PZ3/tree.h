@@ -1,8 +1,7 @@
 #pragma once
 
-#include<stdio.h>
-#include<windows.h>
-
+#include <stdio.h>
+#include <windows.h>
 
 struct tree
 {
@@ -18,5 +17,4 @@ struct tree
    void post_order( FILE *f );
 };
 
-void bracketing( tree *t );
 tree *BuildTree( FILE *f );
