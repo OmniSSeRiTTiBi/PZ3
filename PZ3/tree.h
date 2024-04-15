@@ -11,7 +11,7 @@ struct tree
 
    tree( char _elem = 0, tree *_left = NULL, tree *_right = NULL ) :
       elem( _elem ), left( _left ), right( _right ) { }
-
+   void move_brack( tree *head, tree *tot_multi, tree *mult1, tree mult2 );
    void bracketing( );
    void pre_order( FILE *f );
    void in_order( FILE *f );

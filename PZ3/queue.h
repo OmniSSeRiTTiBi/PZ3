@@ -18,6 +18,6 @@ struct queue
    void push( tree *v );
    int pop( );
    inline tree *top( ) const { return beg->elem; }
-
    inline bool empty( ) const { return !beg; }
+
 };
