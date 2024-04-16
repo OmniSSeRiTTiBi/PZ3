@@ -10,9 +10,19 @@ int main( )
    FILE *f = NULL;
    if ( fopen_s( &f, "C:/Users/egovl/Source/Repos/OmniSSeRiTTiBi/PZ3/PZ3/in.txt", "r" ) )
       perror( "in.txt" ), exit( -1 );
-   t = BuildTree(f);
-   delete f;
+   t = BuildTree( f );
+   fclose( f );
    t->bracketing( );
+
+   if ( fopen_s( &f, "C:/Users/egovl/Source/Repos/OmniSSeRiTTiBi/PZ3/PZ3/out.txt", "w" ) )
+      perror( "out.txt" ), exit( -1 );
+   fprintf_s( f, "PREORDER: " );
+   t->pre_order( f );
+   fprintf_s( f, "\nINORDER: " );
+   t->in_order( f );
+   fprintf_s( f, "\nPOSTORDER: " );
+   t->post_order( f );
+   fclose( f );
 
    return 0;
 }

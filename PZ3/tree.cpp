@@ -6,7 +6,7 @@
 
 enum place { LEFT = 0, RIGHT, ROOT };
 
-tree *BuildTree( FILE *f )
+tree *tree::BuildTree( FILE *f )
 {
    char *c = new char( '0' );
    tree *t = new tree;
@@ -25,9 +25,9 @@ tree *BuildTree( FILE *f )
       default:
          t->elem = *c;
          return t;
-         fclose( f );
-         delete c;
    }
+   fclose( f );
+   delete c;
 }
 
 void tree::move_brack( tree *head, tree *tot_multi, tree *mult1, tree mult2 )
@@ -53,7 +53,8 @@ void tree::bracketing( )
          t = q.top( );
          if ( t->left != NULL && t->right != NULL )
          {
-            if ( t->elem == '+' && t->left->elem == '*' && '*' == t->right->elem )
+            if ( (t->elem == '+' || t->elem == '-') && t->left->elem == '*'
+                 && '*' == t->right->elem )
             {
                if ( t->left->left->elem == t->right->left->elem )
                   move_brack( t, t->left->left, t->left->right, *(t->right->right) );
@@ -69,5 +70,35 @@ void tree::bracketing( )
          }
          q.pop( );
       } while ( !q.empty( ) );
+   }
+}
+
+void tree::pre_order( FILE *f )
+{
+   if ( this )
+   {
+      fprintf_s( f, "%c ", elem );
+      left->pre_order( f );
+      right->pre_order( f );
+   }
+}
+
+void tree::in_order( FILE *f )
+{
+   if ( this )
+   {
+      left->in_order( f );
+      fprintf_s( f, "%c ", elem );
+      right->in_order( f );
+   }
+}
+
+void tree::post_order( FILE *f )
+{
+   if ( this )
+   {
+      left->post_order( f );
+      right->post_order( f );
+      fprintf_s( f, "%c ", elem );
    }
 }

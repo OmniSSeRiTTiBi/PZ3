@@ -1,0 +1,3 @@
+PREORDER: * a - b c 
+INORDER: a * b - c 
+POSTORDER: a b c - * 
