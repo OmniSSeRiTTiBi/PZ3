@@ -8,10 +8,12 @@ int main( )
    FILE *f = NULL;
    if ( fopen_s( &f, "C:/Users/egovl/Source/Repos/OmniSSeRiTTiBi/PZ3/PZ3/in.txt", "r" ) )
       perror( "in.txt" ), exit( -1 );
+
    t = t->build_tree( f );
    fclose( f );
+
    if ( !t )
-      printf_s("Tree is Empty!" ), exit( -1 );
+      printf_s( "Tree is Empty!" ), exit( -1 );
    t->bracketing( );
 
    if ( fopen_s( &f, "C:/Users/egovl/Source/Repos/OmniSSeRiTTiBi/PZ3/PZ3/out.txt", "w" ) )
@@ -23,6 +25,5 @@ int main( )
    fprintf_s( f, "\nPOSTORDER: " );
    t->post_order( f );
    fclose( f );
-
    return 0;
 }
