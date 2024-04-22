@@ -8,7 +8,7 @@ int main( )
    FILE *f = NULL;
    if ( fopen_s( &f, "C:/Users/egovl/Source/Repos/OmniSSeRiTTiBi/PZ3/PZ3/in.txt", "r" ) )
       perror( "in.txt" ), exit( -1 );
-   t = t->BuildTree( f );
+   t = t->build_tree( f );
    fclose( f );
    if ( !t )
       printf_s("Tree is Empty!" ), exit( -1 );

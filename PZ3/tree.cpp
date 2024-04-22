@@ -4,7 +4,7 @@
 #include "tree.h"
 #include "queue.h"
 
-tree *tree::BuildTree( FILE *f )
+tree *tree::build_tree( FILE *f )
 {
    char c = 0;
    fscanf_s( f, "%c", &c );
@@ -13,12 +13,12 @@ tree *tree::BuildTree( FILE *f )
       case '(':
       {
          fscanf_s( f, "%c", &c );
-         tree *t = new tree( c, BuildTree( f ), BuildTree( f ) );
+         tree *t = new tree( c, build_tree( f ), build_tree( f ) );
          fscanf_s( f, "%c", &c );
          return t;
       }
-      case ',': return BuildTree( f );
-      case '0':
+      case ',': return build_tree( f );
+      case '0': return NULL;
       default:
          return new tree( c );
    }
@@ -40,7 +40,6 @@ void tree::bracketing( )
    queue q;
    tree *t = NULL;
    UCHAR fl = 0;
-   this;
    q.push( this );
    do
    {
@@ -98,8 +97,6 @@ void tree::post_order( FILE *f )
 
 bool tree::compare( tree *t )
 {
-   if ( this )
-      return t && left->compare( t->left )
+   return !this || t && left->compare( t->left )
       && right->compare( t->right ) && elem == t->elem;
-   return true;
 }
