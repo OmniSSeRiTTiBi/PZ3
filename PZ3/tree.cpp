@@ -7,24 +7,20 @@
 tree *tree::BuildTree( FILE *f )
 {
    char c = 0;
-   
    fscanf_s( f, "%c", &c );
    switch ( c )
    {
       case '(':
       {
-         tree *t = new tree;
-         fscanf_s( f, "%c", &t->elem );
-         t->left = BuildTree( f );
-         t->right = BuildTree( f );
+         fscanf_s( f, "%c", &c );
+         tree *t = new tree( c, BuildTree( f ), BuildTree( f ) );
          fscanf_s( f, "%c", &c );
          return t;
       }
       case ',': return BuildTree( f );
-      case '0': 
-      default: return NULL;
-        // t->elem = c;
-         //return t;
+      case '0':
+      default:
+         return new tree( c );
    }
    fclose( f );
 }
@@ -44,7 +40,7 @@ void tree::bracketing( )
    queue q;
    tree *t = NULL;
    UCHAR fl = 0;
-
+   this;
    q.push( this );
    do
    {
@@ -103,7 +99,7 @@ void tree::post_order( FILE *f )
 bool tree::compare( tree *t )
 {
    if ( this )
-         return t && left->compare( t->left )
-            && right->compare( t->right ) && elem == t->elem;
+      return t && left->compare( t->left )
+      && right->compare( t->right ) && elem == t->elem;
    return true;
 }
