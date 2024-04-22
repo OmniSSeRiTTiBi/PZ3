@@ -16,5 +16,5 @@ struct tree
    void pre_order( FILE *f );
    void in_order( FILE *f );
    void post_order( FILE *f );
+   bool compare( tree *other );
 };
-
